@@ -3,3 +3,12 @@ Vagrantfile
 *.sublime-*
 .DS_Store
 *.gem
+
+# RVM files for gemset/ruby setting
+.ruby-*
+.rvmrc
+.rakeTasks
+
+# IDE junk
+.idea/*
+*.iml
