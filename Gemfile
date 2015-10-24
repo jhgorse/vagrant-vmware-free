@@ -5,3 +5,7 @@ gemspec
 group :development do
   gem 'vagrant', github: 'mitchellh/vagrant'
 end
+
+group :plugins do
+  gem 'vagrant-vmware-free' , path: '.'
+end
