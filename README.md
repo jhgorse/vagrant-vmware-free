@@ -8,8 +8,3 @@ This plugin is not related in any way to Hashicorp or their VMware offering. The
 Since this is a new project, a good knowledge of Vagrant plugins and VMware is required to use.
 
 The code is provided under the MIT license (just like Vagrant).
-
-
-Install
--------
-A $HOME/.vagrant.d/vmware.yml should exist for provider to work.

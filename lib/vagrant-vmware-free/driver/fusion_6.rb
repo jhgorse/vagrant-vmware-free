@@ -35,7 +35,7 @@ module VagrantPlugins
           raise VIXError, "VixError: #{code}" if (code != 0)
           new_uuid = SecureRandom.uuid
 
-          inventory = YAML.load_file(INVENTORY)
+          inventory = load_inventory
 
           inventory[new_uuid] = { config: dest_file }
 
@@ -51,7 +51,7 @@ module VagrantPlugins
           code, values = wait(job_handle)
           raise VIXError, code: code if (code != 0)
 
-          inventory = YAML.load_file(INVENTORY)
+          inventory = load_inventory
           inventory.delete @uuid
           File.open(INVENTORY, 'wb') do |f|
             f.write(inventory.to_yaml)
@@ -65,7 +65,7 @@ module VagrantPlugins
         end
 
         def vm_exists?(uuid)
-          inventory = YAML.load_file(INVENTORY)
+          inventory = load_inventory
           inventory.each do |k, v|
             return true if k == uuid
           end
@@ -76,7 +76,7 @@ module VagrantPlugins
         # Follwing methods are stubs for now
 
         def read_vms
-          YAML.load_file(INVENTORY)
+          load_inventory
         end
 
         def set_value(key, value)
@@ -181,6 +181,15 @@ module VagrantPlugins
           raise VIXError, code if (code != 0)
 
           values[:VIX_PROPERTY_JOB_RESULT_HANDLE]
+        end
+
+        def load_inventory
+          if File.exists?(INVENTORY)
+            inventory = YAML.load_file(INVENTORY)
+          else
+            inventory = {}
+          end
+          inventory
         end
       end
     end
