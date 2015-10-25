@@ -36,6 +36,9 @@ module VagrantPlugins
             fusion: {
               '6.0' => Fusion_6,
             },
+            workstation: {
+              '11.0' => Fusion_6,
+            }
           }
 
           driver_klass = nil
@@ -112,8 +115,13 @@ module VagrantPlugins
             version = CFPropertyList.native_types(fusion_plist.value)['CFBundleShortVersionString']
 
             host[:version] = version
+          elsif /cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM
+            host[:product] = :workstation
+            # Do not know how to find VMWare Workstation version
+            # So hardcode it for a moment
+            host[:version] = '11.0'
           end
-          
+
           host
         end
       end
