@@ -9,12 +9,12 @@ module VagrantPlugins
       Manage and control VMWare Worksation and VMWare Fusion virtual machines
       EOF
 
-      provider :vmware_free do
+      provider :vmware_fusion do
         require_relative('provider')
         Provider
       end
 
-      config :vmware_free, :provider do
+      config :vmware_fusion, :provider do
         require_relative('config')
         Config
       end
