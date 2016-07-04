@@ -1,6 +1,13 @@
 A free VMware provider for Vagrant
 =========
 
+## Issues
+
+* Does not build
+* Is not recongized by vagrant as a provider
+
+## Info
+
 A Vagrant provider is used to deploy your Vagrant boxes and configuration on some infrastructure. This plugin creates and manages vagrant deployments on VMware Workstaion and Fusion. The work is not even mature enough to be called Alpha, though, so use at your own risk.
 
 This plugin is not related in any way to Hashicorp or their VMware offering. Their plugin is probably much better, if you need VMware support for your project, you should use their product, as this thing barely works, and comes with no support.
