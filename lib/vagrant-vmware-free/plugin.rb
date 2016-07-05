@@ -19,8 +19,18 @@ module VagrantPlugins
         Config
       end
 
+      provider :vmware_desktop do
+        require_relative('provider')
+        Provider
+      end
+
+      config :vmware_desktop, :provider do
+        require_relative('config')
+        Config
+      end
+
     end
-    
+
     autoload :Action, File.expand_path('../action', __FILE__)
     autoload :Errors, File.expand_path('../errors', __FILE__)
 
