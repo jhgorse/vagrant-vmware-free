@@ -8,7 +8,7 @@ module VagrantPlugins
         class VIXError < StandardError; end
         extend FFI::Library
 
-        ffi_lib 'c:/Program Files (x86)/VMware/VMware VIX/VixAllProductsDyn.dll'
+        ffi_lib '/Applications/VMware Fusion.app/Contents/Public/libvixAllProducts.dylib'
       end
     end
   end
