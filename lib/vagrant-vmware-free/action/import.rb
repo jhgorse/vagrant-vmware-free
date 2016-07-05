@@ -4,6 +4,7 @@ module VagrantPlugins
       class Import
         def initialize(app, env)
           @app = app
+          @logger = Log4r::Logger::new('vagrant::provider::vmware-free::action::import')
         end
 
         def call(env)
@@ -13,6 +14,8 @@ module VagrantPlugins
           # Import the virtual machine
           vmx_file = Dir.glob(env[:machine].box.directory.join('*.vmx'))[0]
           dest_file = env[:machine].data_dir.join(File.basename(vmx_file))
+
+          @logger.debug("vmx_file: #{vmx_file}  dest_file: #{dest_file.to_s}")
 
           env[:machine].id = env[:machine].provider.driver.import(vmx_file, dest_file.to_s) do |progress|
             env[:ui].clear_line

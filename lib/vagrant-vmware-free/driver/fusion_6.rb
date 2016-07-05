@@ -32,7 +32,7 @@ module VagrantPlugins
           jobHandle = VixVM_Clone(box_handle, :VIX_INVALID_HANDLE, :VIX_CLONETYPE_FULL, dest_file, 0, :VIX_INVALID_HANDLE, nil, nil)
           code, values = wait(jobHandle)
 
-          raise VIXError, "VixError: #{code}" if (code != 0)
+          raise VIXError, "VixError: #{code} #{@values}" if (code != 0)
           new_uuid = SecureRandom.uuid
 
           inventory = load_inventory
