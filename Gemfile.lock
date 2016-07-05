@@ -13,7 +13,7 @@ GIT
 PATH
   remote: .
   specs:
-    vagrant-vmware-free (0.0.1)
+    vagrant-vmware-free (0.0.3)
       CFPropertyList (~> 2.0)
       ffi (~> 1.9.3)
 
