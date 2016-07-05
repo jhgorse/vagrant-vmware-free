@@ -30,24 +30,28 @@ module VagrantPlugins
             raise ProviderVMwareFree::Errors::VMWareNotDetected
           end
 
-          @logger.debug("Using #{@host[:product]} version: #{@host[:version]}")
-
           driver_map = {
             fusion: {
               '6.0' => Fusion_6,
+              '7.0' => Fusion_6,
+              '7.1' => Fusion_6,
             },
             workstation: {
               '11.0' => Fusion_6,
+              '12.0' => Fusion_6,
             }
           }
 
-          driver_klass = nil
-          driver_map[@host[:product]].each do |key, klass|
-            if @host[:version].start_with? key
-              driver_klass = klass
-              break
-            end
-          end
+          driver_klass = Fusion_6
+        #   driver_klass = nil
+        #   driver_map[@host[:product]].each do |key, klass|
+        #     @logger.debug("#{@host[:product]} version: #{@host[:version]}")
+        #     if @host[:version].start_with? key
+        #       @logger.debug("Using #{@host[:product]} version: #{@host[:version]}")
+        #       driver_klass = klass
+        #       break
+        #     end
+        #   end
 
           if !driver_klass
             raise ProviderVMwareFree::Errors::VMWareInvalidVersion
