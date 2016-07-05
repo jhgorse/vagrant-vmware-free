@@ -160,6 +160,7 @@ module VagrantPlugins
         def get_host_handle
           @logger.debug('Connecting to VIX...')
           jobHandle = VixHost_Connect(:VIX_API_VERSION, :VIX_SERVICEPROVIDER_VMWARE_WORKSTATION,
+          # TODO: pix 2nd argument based on whichever vmware we are actually using
                                        '', 0, '', '', 0, :VIX_INVALID_HANDLE, nil, nil)
           code, values = wait(jobHandle, [:VIX_PROPERTY_JOB_RESULT_HANDLE])
 
